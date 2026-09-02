@@ -720,22 +720,131 @@ tbody tr:hover {
 }
 
 
+/* =========================================
+   RESULTS RESPONSIVE
+========================================= */
+
 @media (max-width: 700px) {
 
-    .ranking-header,
-    .ranking-row {
+    .results-container {
+        width: calc(100% - 24px);
+        margin: 20px auto;
+        padding: 20px 15px;
+        border-radius: 15px;
+    }
 
-        grid-template-columns:
-            60px
-            1fr
-            80px
-            80px
-            80px;
+    .results-container h1 {
+        font-size: 21px;
+        line-height: 1.5;
+    }
+
+    .subtitle {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+
+    /* Hide table header on mobile */
+
+    .ranking-header {
+        display: none;
+    }
+
+    /* Student Card */
+
+    .ranking-row {
+        display: grid;
+
+        grid-template-columns: 55px 1fr;
+
+        gap: 10px 12px;
+
+        padding: 15px;
+
+        margin-bottom: 12px;
+
+        border: 1px solid #e5e7eb;
+
+        border-radius: 12px;
+
+        background: white;
+    }
+
+    /* Rank */
+
+    .ranking-row .rank {
+        grid-row: span 2;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        font-size: 20px;
+
+        font-weight: bold;
+    }
+
+    /* Student Name */
+
+    .ranking-row .student-name {
+        min-width: 0;
+
+        font-size: 15px;
+
+        font-weight: bold;
+
+        overflow-wrap: anywhere;
+
+        text-align: right;
+    }
+
+    /* Score */
+
+    .ranking-row .score {
+        text-align: right;
 
         font-size: 13px;
+    }
 
-        padding: 10px;
+    .ranking-row .score::before {
+        content: "الدرجة: ";
 
+        color: #6b7280;
+
+        font-weight: normal;
+    }
+
+    /* Percentage */
+
+    .ranking-row .percentage {
+        text-align: right;
+
+        font-size: 13px;
+    }
+
+    .ranking-row .percentage::before {
+        content: "النسبة: ";
+
+        color: #6b7280;
+
+        font-weight: normal;
+    }
+
+    /* Time */
+
+    .ranking-row .time {
+        text-align: right;
+
+        font-size: 13px;
+    }
+
+    .ranking-row .time::before {
+        content: "الوقت: ";
+
+        color: #6b7280;
+
+        font-weight: normal;
     }
 
 }

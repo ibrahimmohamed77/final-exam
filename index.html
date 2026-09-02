@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>C++ Level 1 Exam</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <main class="start-page">
+
+        <div class="start-card">
+
+            <div class="logo">
+                C++
+            </div>
+
+            <h1>C++ Level 1</h1>
+
+            <p class="subtitle">
+                Programming Assessment
+            </p>
+
+
+            <div class="exam-info">
+
+                <div class="info-box">
+                    <span>Questions</span>
+                    <strong>25</strong>
+                </div>
+
+                <div class="info-box">
+                    <span>Time</span>
+                    <strong>60 Min</strong>
+                </div>
+
+                <div class="info-box">
+                    <span>Level</span>
+                    <strong>1</strong>
+                </div>
+
+            </div>
+ <div class="exam-note">
+
+    <strong>⚠️ ملاحظة مهمة</strong>
+
+    <p>
+        اقرأ كل كود بعناية قبل الإجابة —
+        بعض الأسئلة أبسط مما تبدو
+    </p>
+
+</div>
+
+            <div class="input-group">
+
+                <label for="studentName">
+                    Student Name
+                </label>
+
+                <input
+                    type="text"
+                    id="studentName"
+                    placeholder="Enter your full name"
+                >
+
+            </div>
+
+
+            <button
+                class="btn btn-primary"
+                id="startBtn"
+            >
+                Start Exam
+            </button>
+       <a
+    href="#"
+    class="results-link"
+    id="resultsBtn"
+>
+    View Results
+</a>
+
+        </div>
+
+    </main>
+
+
+   <script>
+
+    const startBtn =
+        document.getElementById("startBtn");
+
+    startBtn.addEventListener("click", function () {
+
+        const name =
+            document
+            .getElementById("studentName")
+            .value
+            .trim();
+
+
+        if (name === "") {
+
+            alert("Please enter your name.");
+
+            return;
+
+        }
+
+
+        // حفظ اسم الطالب
+        localStorage.setItem(
+            "studentName",
+            name
+        );
+
+
+        // وقت بداية الامتحان
+        localStorage.setItem(
+            "examStartTime",
+            Date.now()
+        );
+
+
+        // الانتقال للامتحان
+        window.location.href =
+            "exam.html";
+
+    });
+
+
+   const resultsBtn =
+    document.getElementById("resultsBtn");
+
+
+resultsBtn.addEventListener(
+    "click",
+    function (event) {
+
+        event.preventDefault();
+
+        const password =
+            prompt("Enter Results Password");
+
+
+        if (password === "1234") {
+
+            window.location.href =
+                "results.html";
+
+        }
+
+        else {
+
+            alert(
+                "Incorrect password."
+            );
+
+        }
+
+    }
+);
+</script>
+
+</body>
+</html>

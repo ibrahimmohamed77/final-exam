@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>C++ Level 1 Exam</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+    <main class="exam-page" id="examPage">
+
+        <div class="container">
+
+
+            <!-- HEADER -->
+
+            <header class="exam-header">
+
+                <div>
+
+                    <strong>
+                        C++ Level 1
+                    </strong>
+
+                    <div
+                        class="student-name"
+                        id="displayName"
+                    >
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="timer"
+                    id="timer"
+                >
+                    60:00
+                </div>
+
+            </header>
+
+
+            <!-- PROGRESS -->
+
+            <div class="progress-wrapper">
+
+                <div class="progress-info">
+
+                    <span id="questionCounter">
+                        Question 1 of 3
+                    </span>
+
+                    <span id="answeredCounter">
+                        Answered: 0 / 3
+                    </span>
+
+                </div>
+
+
+                <div class="progress-bar">
+
+                    <div
+                        class="progress"
+                        id="progress"
+                    ></div>
+
+                </div>
+
+            </div>
+
+
+            <!-- QUESTION -->
+
+            <div class="question-card">
+
+
+                <div
+                    class="question-number"
+                    id="questionNumber"
+                >
+                    Question 1
+                </div>
+
+
+                <div
+                    class="question-text"
+                    id="questionText"
+                >
+                </div>
+
+
+                <pre
+                    class="code"
+                    id="questionCode"
+                ></pre>
+
+
+                <div
+                    class="options"
+                    id="options"
+                >
+                </div>
+
+
+                <!-- NAVIGATION -->
+
+                <div class="navigation">
+
+                    <button
+                        class="btn btn-secondary"
+                        id="previousBtn"
+                    >
+                        ← Previous
+                    </button>
+
+
+                    <button
+                        class="btn btn-secondary"
+                        id="nextBtn"
+                    >
+                        Next →
+                    </button>
+
+
+                    <button
+                        class="btn btn-submit"
+                        id="submitBtn"
+                    >
+                        Submit Exam
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+<!-- Submission Success Screen -->
+<div id="submissionScreen" class="submission-screen">
+
+    <div class="submission-box">
+
+        <div class="success-icon">
+            ✓
+        </div>
+
+        <h2>تم تسليم الامتحان بنجاح</h2>
+
+        <p>
+            تم تسجيل إجاباتك بنجاح.
+            <br>
+            سيتم إعلان النتائج لاحقًا.
+        </p>
+
+        <div class="submission-note">
+            🔒 تم إغلاق الامتحان
+        </div>
+
+    </div>
+
+</div>
+    </main>
+
+
+    <!-- JAVASCRIPT FILES -->
+
+    <script src="js/questions.js"></script>
+
+    <script src="js/exam.js"></script>
+
+</body>
+
+</html>

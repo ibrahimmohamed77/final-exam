@@ -35,7 +35,7 @@ int main()
         question: "ما القيمة النهائية للمتغير x بعد تنفيذ جميع الأوامر؟",
         code: `
 #include <iostream>
-using namespace std;
+using namespace std
 
 int main()
 {
@@ -55,9 +55,9 @@ int main()
             "9",
             "10",
             "11",
-            "12"
+            "Error"
         ],
-        answer: "9"
+        answer: "Error"
     },
 
     // Q3
@@ -609,33 +609,31 @@ int main()
     },
 
     // Q21
-    {
-        question: " ما الحرف الذي سيتم طباعته؟",
-        code: `
+{
+    question: "ما الناتج المتوقع من البرنامج التالي؟",
+    code: `
 #include <iostream>
+#include <string>
 using namespace std;
 
 int main()
 {
-    char letters[] = {'A', 'B', 'C', 'D'};
+    int x = 10;
+    float *p = &x;
 
-    char *p = letters;
-
-    p++;
-
-    cout << *p;
+    cout << p;
 
     return 0;
 }
-        `,
-        options: [
-            "A",
-            "B",
-            "C",
-            "D"
-        ],
-        answer: "B"
-    },
+    `,
+    options: [
+       "10",
+"Address of x",
+"Address of p",
+"Error"
+    ],
+    answer: "Error"
+},
 
     // Q22
     {
@@ -644,7 +642,7 @@ int main()
 #include <iostream>
 using namespace std;
 
-void calc(int x)
+void cal(int x)
 {
     x = x + 3;
 
@@ -658,7 +656,7 @@ int main()
 {
     int x = 4;
 
-    calc(x);
+    cal(x);
 
     cout << " " << x;
 

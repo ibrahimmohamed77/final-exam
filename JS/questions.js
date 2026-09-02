@@ -1,10 +1,8 @@
 const questions = [
 
-    // =====================================================
-    // Q1 - Arithmetic & Assignment
-    // =====================================================
+    // Q1
     {
-        question: "ما الناتج؟",
+        question: "بعد تنفيذ البرنامج بالكامل، ما القيمتان اللتان سيتم طباعتهما؟",
         code: `
 #include <iostream>
 using namespace std;
@@ -32,38 +30,37 @@ int main()
         answer: "5 18"
     },
 
-
-    // =====================================================
-    // Q2 - Arithmetic & Modulo
-    // =====================================================
+    // Q2
     {
-        question: "ما الناتج؟",
+        question: "ما القيمة النهائية للمتغير x بعد تنفيذ جميع الأوامر؟",
         code: `
 #include <iostream>
 using namespace std;
 
 int main()
 {
-    int x = 23;
+    int x = 8;
 
-    cout << x / 5 << " " << x % 5;
+    x += 4;
+    x *= 2;
+    x -= 6;
+    x /= 2;
+
+    cout << x;
 
     return 0;
 }
         `,
         options: [
-            "4 3",
-            "4 2",
-            "5 3",
-            "5 2"
+            "9",
+            "10",
+            "11",
+            "12"
         ],
-        answer: "4 3"
+        answer: "9"
     },
 
-
-    // =====================================================
-    // Q3 - Logical Operators
-    // =====================================================
+    // Q3
     {
         question: "ما الناتج؟",
         code: `
@@ -92,12 +89,9 @@ int main()
         answer: "Yes"
     },
 
-
-    // =====================================================
-    // Q4 - Logical !
-    // =====================================================
+    // Q4
     {
-        question: "ما الناتج؟",
+        question: " ما الناتج الذي سيظهر؟",
         code: `
 #include <iostream>
 using namespace std;
@@ -118,25 +112,22 @@ int main()
         options: [
             "OK",
             "No",
-            "17",
-            "true"
+            "true",
+            "17"
         ],
         answer: "No"
     },
 
-
-    // =====================================================
-    // Q5 - Problem Solving + IF ELSE IF
-    // =====================================================
+    // Q5
     {
-        question: "إذا كانت قيمة x = 15، ما الناتج؟",
+        question: "إذا كانت قيمة x تساوي 10، فما الناتج؟",
         code: `
 #include <iostream>
 using namespace std;
 
 int main()
 {
-    int x = 15;
+    int x = 10;
 
     if (x % 3 == 0 && x % 5 == 0)
         cout << "A";
@@ -156,15 +147,12 @@ int main()
             "C",
             "D"
         ],
-        answer: "A"
+        answer: "C"
     },
 
-
-    // =====================================================
-    // Q6 - Test Case
-    // =====================================================
+    // Q6
     {
-        question: "أي مجموعة من القيم تعتبر أفضل Test Case لاختبار جميع الحالات الموجودة في البرنامج؟",
+        question: "أي مجموعة من القيم تختبر الحالات الثلاث Positive و Negative و Zero؟",
         code: `
 #include <iostream>
 using namespace std;
@@ -193,12 +181,9 @@ int main()
         answer: "-5, 0, 7"
     },
 
-
-    // =====================================================
-    // Q7 - Nested IF
-    // =====================================================
+    // Q7
     {
-        question: "ما الناتج؟",
+        question: " ما الناتج؟",
         code: `
 #include <iostream>
 using namespace std;
@@ -231,12 +216,9 @@ int main()
         answer: "A"
     },
 
-
-    // =====================================================
-    // Q8 - Array / Correct Code
-    // =====================================================
+    // Q8
     {
-        question: "لدينا مصفوفة تحتوي على أرقام موجبة وسالبة. نريد طباعة أكبر رقم. أي كود صحيح؟",
+        question: "أي كود من التالي يجد أكبر عنصر في المصفوفة بشكل صحيح؟",
         code: `
 #include <iostream>
 using namespace std;
@@ -245,88 +227,82 @@ int main()
 {
     int a[5] = {3, -2, 10, 5, 7};
 
-    // أي كود من التالي صحيح لإيجاد أكبر رقم؟
+    // اختر الكود الصحيح
 
     return 0;
 }
         `,
         options: [
-            `int big = a[0];
-for(int i = 1; i < 5; i++)
-{
-    if(a[i] > big)
-        big = a[i];
-}
-cout << big;`,
-
-            `int big = 0;
-for(int i = 1; i < 5; i++)
-{
-    if(a[i] > big)
-        big = a[i];
-}
-cout << big;`,
-
-            `int big = a[0];
-for(int i = 1; i <= 5; i++)
-{
-    if(a[i] > big)
-        big = a[i];
-}
-cout << big;`,
-
-            `int big = a[0];
-for(int i = 1; i < 5; i++)
-{
-    if(a[i] < big)
-        big = a[i];
-}
-cout << big;`
+            "A) int big = a[0]; for(int i = 1; i < 5; i++) if(a[i] > big) big = a[i];",
+            "B) int big = a[0]; for(int i = 1; i <= 5; i++) if(a[i] > big) big = a[i];",
+            "C) int big = a[0]; for(int i = 1; i < 5; i++) if(a[i] < big) big = a[i];",
+            "D) int big = 0; for(int i = 1; i < 5; i++) if(a[i] > big) big = a[i];"
         ],
-        answer: `int big = a[0];
-for(int i = 1; i < 5; i++)
-{
-    if(a[i] > big)
-        big = a[i];
-}
-cout << big;`
+        answer: "A) int big = a[0]; for(int i = 1; i < 5; i++) if(a[i] > big) big = a[i];"
     },
 
-
-    // =====================================================
-    // Q9 - FOR
-    // =====================================================
+    // Q9
     {
-        question: "ما الناتج؟",
+        question: "عند تشغيل البرنامج كما هو، ماذا سيحدث؟",
         code: `
 #include <iostream>
 using namespace std;
 
 int main()
 {
-    for(int i = 1; i <= 5; i++)
+    int x = 1;
+
+    while(x <= 5)
     {
-        cout << i << " ";
+        cout << x << " ";
     }
 
     return 0;
 }
         `,
         options: [
-            "1 2 3 4 5",
-            "0 1 2 3 4",
-            "1 2 3 4",
-            "5 4 3 2 1"
+            "سيطبع 1 2 3 4 5 ثم يتوقف",
+            "سيطبع 1 مرة واحدة ثم يتوقف",
+            "سيستمر في التكرار لأن x لا تتغير",
+            "لن يتم تنفيذ الحلقة"
         ],
-        answer: "1 2 3 4 5"
+        answer: "سيستمر في التكرار لأن x لا تتغير"
     },
 
-
-    // =====================================================
-    // Q10 - FOR + IF
-    // =====================================================
+    // Q10
     {
-        question: "ما الناتج؟",
+        question: "ما القيمة النهائية للمتغير sum؟",
+        code: `
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int sum = 1;
+
+    for(int i = 1; i <= 5; i++)
+    {
+        if(i % 2 != 0)
+            sum += i;
+    }
+
+    cout << sum;
+
+    return 0;
+}
+        `,
+        options: [
+            "9",
+            "10",
+            "12",
+            "16"
+        ],
+        answer: "10"
+    },
+
+    // Q11
+    {
+        question: "ما القيمة النهائية للمتغير sum بعد انتهاء الحلقة؟",
         code: `
 #include <iostream>
 using namespace std;
@@ -348,19 +324,16 @@ int main()
         `,
         options: [
             "6",
-            "12",
             "9",
+            "12",
             "21"
         ],
         answer: "12"
     },
 
-
-    // =====================================================
-    // Q11 - BREAK
-    // =====================================================
+    // Q12
     {
-        question: "ما الناتج؟",
+        question: "عندما تصل قيمة i إلى 5، ما آخر قيمة سيتم طباعتها؟",
         code: `
 #include <iostream>
 using namespace std;
@@ -379,20 +352,49 @@ int main()
 }
         `,
         options: [
-            "1 2 3 4",
-            "1 2 3 4 5",
-            "5 6 7 8 9 10",
-            "1 2 3 4 5 6 7 8 9 10"
+            "4",
+            "5",
+            "6",
+            "10"
         ],
-        answer: "1 2 3 4"
+        answer: "4"
     },
 
-
-    // =====================================================
-    // Q12 - CONTINUE
-    // =====================================================
+    // Q13
     {
-        question: "ما الناتج؟",
+        question: "كم مرة سيتم تنفيذ أمر  cout ؟",
+        code: `
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    for(int i = 1; i <= 3; i++)
+    {
+        for(int j = 1; j <= 3; j++)
+        {
+            if(j == 2)
+                break;
+
+            cout << j << " ";
+        }
+    }
+
+    return 0;
+}
+        `,
+        options: [
+            "2 مرات",
+            "3 مرات",
+            "6 مرات",
+            "9 مرات"
+        ],
+        answer: "3 مرات"
+    },
+
+    // Q14
+    {
+        question: "ما الناتج بعد تنفيذ lOOP ؟",
         code: `
 #include <iostream>
 using namespace std;
@@ -413,64 +415,26 @@ int main()
         options: [
             "1 2 3 4 5",
             "1 2 4 5",
-            "1 2",
+            "1 2 3",
             "3 4 5"
         ],
         answer: "1 2 4 5"
     },
 
-
-    // =====================================================
-    // Q13 - Nested FOR
-    // =====================================================
+    // Q15
     {
-        question: "كم مرة سيتم تنفيذ cout؟",
+        question: "أي اختيار يمثل الناتج الصحيح للبرنامج؟",
         code: `
 #include <iostream>
 using namespace std;
 
 int main()
 {
-    for(int i = 1; i <= 3; i++)
-    {
-        for(int j = 1; j <= 2; j++)
-        {
-            cout << "*";
-        }
-    }
-
-    return 0;
-}
-        `,
-        options: [
-            "3",
-            "5",
-            "6",
-            "9"
-        ],
-        answer: "6"
-    },
-
-
-    // =====================================================
-    // Q14 - Nested FOR + IF
-    // =====================================================
-    {
-        question: "ما الناتج؟",
-        code: `
-#include <iostream>
-using namespace std;
-
-int main()
-{
-    for(int i = 1; i <= 3; i++)
+    for(int i = 1; i <= 2; i++)
     {
         for(int j = 1; j <= 3; j++)
         {
-            if(i == j)
-                cout << "1";
-            else
-                cout << "0";
+            cout << j << " ";
         }
 
         cout << endl;
@@ -480,127 +444,81 @@ int main()
 }
         `,
         options: [
-            `100
-010
-001`,
-
-            `111
-111
-111`,
-
-            `001
-010
-100`,
-
-            `000
-000
-000`
+            "1 2 3 / 1 2 3",
+            "1 2 / 1 2 / 1 2",
+            "1 2 3 1 2 3",
+            "1 1 / 2 2 / 3 3"
         ],
-        answer: `100
-010
-001`
+        answer: "1 2 3 / 1 2 3"
     },
 
-
-    // =====================================================
-    // Q15 - Array Index
-    // =====================================================
+    // Q16
     {
-        question: "ما قيمة العنصر الموجود في index رقم 2؟",
+        question: "ما القيمة النهائية للمتغير count؟",
         code: `
 #include <iostream>
 using namespace std;
 
 int main()
 {
-    int a[5] = {10, 20, 30, 40, 50};
+    int a[6] = {3, 8, 5, 10, 7, 4};
+    int count = 0;
 
-    cout << a[2];
+    for(int i = 0; i < 6; i++)
+    {
+        if(a[i] % 2 == 0)
+            count++;
+    }
+
+    cout << count;
 
     return 0;
 }
         `,
         options: [
-            "10",
-            "20",
-            "30",
-            "40"
+            "2",
+            "3",
+            "4",
+            "6"
         ],
-        answer: "30"
+        answer: "3"
     },
 
-
-    // =====================================================
-    // Q16 - Array + Problem Solving
-    // =====================================================
+    // Q17
     {
-        question: "ما الناتج؟",
+        question: "كم مرة ستظهر القيمة 2 داخل المصفوفة؟",
         code: `
 #include <iostream>
 using namespace std;
 
 int main()
 {
-    int a[5] = {3, 8, 5, 10, 7};
-    int sum = 0;
+    int a[5] = {4, 2, 7, 2, 9};
+    int count = 0;
 
     for(int i = 0; i < 5; i++)
     {
-        if(a[i] > 5)
-            sum += a[i];
+        if(a[i] == 2)
+            count++;
     }
 
-    cout << sum;
+    cout << count;
 
     return 0;
 }
         `,
         options: [
-            "18",
-            "25",
-            "30",
-            "33"
+            "1",
+            "2",
+            "3",
+            "4"
         ],
-        answer: "25"
+        answer: "2"
     },
 
-
-    // =====================================================
-    // Q17 - Array Out Of Bounds
-    // =====================================================
+    // Q18
     {
-        question: "ما المشكلة في الكود التالي؟",
-        code: `
-#include <iostream>
-using namespace std;
-
-int main()
-{
-    int a[5] = {10, 20, 30, 40, 50};
-
-    for(int i = 0; i <= 5; i++)
-    {
-        cout << a[i] << " ";
-    }
-
-    return 0;
-}
-        `,
-        options: [
-            "الكود صحيح تمامًا",
-            "المشكلة أن المصفوفة تبدأ من 1",
-            "المشكلة أن i تصل إلى 5 وهذا خارج حدود المصفوفة",
-            "المشكلة في cout"
-        ],
-        answer: "المشكلة أن i تصل إلى 5 وهذا خارج حدود المصفوفة"
-    },
-
-
-    // =====================================================
-    // Q18 - 2D Array
-    // =====================================================
-    {
-        question: "ما الناتج؟",
+        question: "ما القيمة الموجودة في a[1][2]؟",
         code: `
 #include <iostream>
 using namespace std;
@@ -626,12 +544,9 @@ int main()
         answer: "6"
     },
 
-
-    // =====================================================
-    // Q19 - 2D Array + Nested Loop
-    // =====================================================
+    // Q19
     {
-        question: "ما الناتج؟",
+        question: "ما القيمة النهائية للمتغير sum؟",
         code: `
 #include <iostream>
 using namespace std;
@@ -667,12 +582,9 @@ int main()
         answer: "10"
     },
 
-
-    // =====================================================
-    // Q20 - String
-    // =====================================================
+    // Q20
     {
-        question: "ما الناتج؟",
+        question: "ما الحرف الذي سيتم الوصول إليه باستخدام name[3]؟",
         code: `
 #include <iostream>
 #include <string>
@@ -680,87 +592,89 @@ using namespace std;
 
 int main()
 {
-    string name = "Ali";
+    string name = "Ahmed";
 
-    cout << name[1];
-
-    return 0;
-}
-        `,
-        options: [
-            "A",
-            "l",
-            "i",
-            "Ali"
-        ],
-        answer: "l"
-    },
-
-
-    // =====================================================
-    // Q21 - Array Of Char
-    // =====================================================
-    {
-        question: "ما الناتج؟",
-        code: `
-#include <iostream>
-using namespace std;
-
-int main()
-{
-    char name[] = "Ali";
-
-    cout << name[2];
+    cout << name[3];
 
     return 0;
 }
         `,
         options: [
             "A",
-            "l",
-            "i",
-            "Ali"
+            "h",
+            "m",
+            "e"
         ],
-        answer: "i"
+        answer: "e"
     },
 
-
-    // =====================================================
-    // Q22 - Function
-    // =====================================================
+    // Q21
     {
-        question: "ما الناتج؟",
+        question: " ما الحرف الذي سيتم طباعته؟",
         code: `
 #include <iostream>
 using namespace std;
 
-int calc(int x)
-{
-    return x * 2;
-}
-
 int main()
 {
-    int x = 5;
+    char letters[] = {'A', 'B', 'C', 'D'};
 
-    cout << calc(x);
+    char *p = letters;
+
+    p++;
+
+    cout << *p;
 
     return 0;
 }
         `,
         options: [
-            "5",
-            "7",
-            "10",
-            "25"
+            "A",
+            "B",
+            "C",
+            "D"
         ],
-        answer: "10"
+        answer: "B"
     },
 
+    // Q22
+    {
+        question: "ما الناتج الكامل؟",
+        code: `
+#include <iostream>
+using namespace std;
 
-    // =====================================================
-    // Q23 - Global & Local Scope
-    // =====================================================
+void calc(int x)
+{
+    x = x + 3;
+
+    if(x % 2 == 0)
+        cout << "Even";
+    else
+        cout << "Odd";
+}
+
+int main()
+{
+    int x = 4;
+
+    calc(x);
+
+    cout << " " << x;
+
+    return 0;
+}
+        `,
+        options: [
+            "Even 7",
+            "Odd 4",
+            "Odd 7",
+            "Even 4"
+        ],
+        answer: "Odd 4"
+    },
+
+    // Q23
     {
         question: "ما الناتج؟",
         code: `
@@ -794,53 +708,45 @@ int main()
         answer: "20 10"
     },
 
-
-    // =====================================================
-    // Q24 - Prefix Sum
-    // =====================================================
+    // Q24
     {
-        question: "ما الناتج؟ البرنامج يحسب مجموع العناصر من index 1 إلى index 3 باستخدام Prefix Sum.",
+        question: "ما القيمة النهائية للمتغير sum؟",
         code: `
 #include <iostream>
 using namespace std;
 
 int main()
 {
-    int a[5] = {3, 1, 4, 2, 5};
-    int p[5];
+    int sum = 0;
 
-    p[0] = a[0];
-
-    for(int i = 1; i < 5; i++)
+    for(int i = 1; i <= 5; i++)
     {
-        p[i] = p[i - 1] + a[i];
+        if(i == 3)
+            continue;
+
+        sum += i;
     }
 
-    int left = 1;
-    int right = 3;
-
-    cout << p[right] - p[left - 1];
+    cout << sum;
 
     return 0;
 }
         `,
         options: [
-            "6",
-            "7",
-            "8",
-            "10"
+            "9",
+            "10",
+            "12",
+            "15"
         ],
-        answer: "7"
+        answer: "12"
     },
 
-
-    // =====================================================
-    // Q25 - Errors + using namespace + do while
-    // =====================================================
+    // Q25
     {
-        question: "ما الأخطاء الموجودة في الكود التالي؟",
-        code: `
+    question: "ما الناتج المتوقع من البرنامج التالي؟",
+    code: `
 #include <iostream>
+using namespace std;
 
 int main()
 {
@@ -855,14 +761,14 @@ int main()
 
     return 0;
 }
-        `,
-        options: [
-            "يوجد خطأ واحد فقط: نحتاج using namespace std;",
-            "يوجد خطأ واحد فقط: نحتاج ; بعد while(x <= 3)",
-            "يوجد خطآن: نحتاج using namespace std; ونحتاج ; بعد while(x <= 3)",
-            "لا يوجد أي خطأ"
-        ],
-        answer: "يوجد خطآن: نحتاج using namespace std; ونحتاج ; بعد while(x <= 3)"
-    }
+    `,
+    options: [
+        "1 2 3",
+        "1 2 3 4",
+        "1 2",
+        "Error"
+    ],
+    answer: "Error"
+},
 
 ];

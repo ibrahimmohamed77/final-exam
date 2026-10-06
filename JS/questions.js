@@ -1,772 +1,731 @@
 const questions = [
 
-    // Q1
     {
-        question: "بعد تنفيذ البرنامج بالكامل، ما القيمتان اللتان سيتم طباعتهما؟",
-        code: `
+        question: "ما هو ناتج الكود التالي؟",
+
+        code: String.raw`
 #include <iostream>
 using namespace std;
 
-int main()
-{
-    int x = 4;
-    int y = 3;
-
-    x += 2;
-    y *= x;
-    x--;
-
-    cout << x << " " << y;
-
-    return 0;
-}
-        `,
-        options: [
-            "5 18",
-            "6 18",
-            "5 15",
-            "4 18"
-        ],
-        answer: "5 18"
-    },
-
-    // Q2
-    {
-        question: "ما القيمة النهائية للمتغير x بعد تنفيذ جميع الأوامر؟",
-        code: `
-#include <iostream>
-using namespace std
+class Car {
+public:
+    int speed = 100;
+};
 
 int main()
 {
-    int x = 8;
+    Car c1;
+    Car c2;
 
-    x += 4;
-    x *= 2;
-    x -= 6;
-    x /= 2;
+    c1.speed = 200;
 
-    cout << x;
+    cout << c2.speed << endl;
 
     return 0;
 }
-        `,
+`,
+
         options: [
-            "9",
-            "10",
-            "11",
+            "0",
+            "100",
+            "200",
             "Error"
         ],
-        answer: "Error"
+
+        answer: "100"
     },
 
-    // Q3
     {
-        question: "ما الناتج؟",
-        code: `
+        question: "ما هو ناتج الكود التالي؟",
+
+        code: String.raw`
 #include <iostream>
 using namespace std;
 
-int main()
-{
-    int x = 8;
-    int y = 3;
+class Student {
+public:
+    int age = 15;
 
-    if ((x > 5 && y < 5) && !(x == 10 || y == 0))
-        cout << "Yes";
-    else
-        cout << "No";
-
-    return 0;
-}
-        `,
-        options: [
-            "Yes",
-            "No",
-            "8",
-            "3"
-        ],
-        answer: "Yes"
-    },
-
-    // Q4
-    {
-        question: " ما الناتج الذي سيظهر؟",
-        code: `
-#include <iostream>
-using namespace std;
-
-int main()
-{
-    int age = 17;
-    bool card = true;
-
-    if (age >= 18 || !card)
-        cout << "OK";
-    else
-        cout << "No";
-
-    return 0;
-}
-        `,
-        options: [
-            "OK",
-            "No",
-            "true",
-            "17"
-        ],
-        answer: "No"
-    },
-
-    // Q5
-    {
-        question: "إذا كانت قيمة x تساوي 10، فما الناتج؟",
-        code: `
-#include <iostream>
-using namespace std;
-
-int main()
-{
-    int x = 10;
-
-    if (x % 3 == 0 && x % 5 == 0)
-        cout << "A";
-    else if (x % 3 == 0)
-        cout << "B";
-    else if (x % 5 == 0)
-        cout << "C";
-    else
-        cout << "D";
-
-    return 0;
-}
-        `,
-        options: [
-            "A",
-            "B",
-            "C",
-            "D"
-        ],
-        answer: "C"
-    },
-
-    // Q6
-    {
-        question: "أي مجموعة من القيم تختبر الحالات الثلاث Positive و Negative و Zero؟",
-        code: `
-#include <iostream>
-using namespace std;
-
-int main()
-{
-    int x;
-    cin >> x;
-
-    if (x > 0)
-        cout << "Positive";
-    else if (x < 0)
-        cout << "Negative";
-    else
-        cout << "Zero";
-
-    return 0;
-}
-        `,
-        options: [
-            "1, 2, 3",
-            "-5, 0, 7",
-            "0, 0, 0",
-            "-1, -2, -3"
-        ],
-        answer: "-5, 0, 7"
-    },
-
-    // Q7
-    {
-        question: " ما الناتج؟",
-        code: `
-#include <iostream>
-using namespace std;
-
-int main()
-{
-    int x = 10;
-
-    if (x > 5)
-    {
-        if (x % 2 == 0)
-            cout << "A";
-        else
-            cout << "B";
+    void display() {
+        cout << age + 5 << endl;
     }
-    else
-    {
-        cout << "C";
-    }
-
-    return 0;
-}
-        `,
-        options: [
-            "A",
-            "B",
-            "C",
-            "10"
-        ],
-        answer: "A"
-    },
-
-    // Q8
-    {
-        question: "أي كود من التالي يجد أكبر عنصر في المصفوفة بشكل صحيح؟",
-        code: `
-#include <iostream>
-using namespace std;
+};
 
 int main()
 {
-    int a[5] = {3, -2, 10, 5, 7};
+    Student s;
 
-    // اختر الكود الصحيح
-
-    return 0;
-}
-        `,
-        options: [
-            "A) int big = a[0]; for(int i = 1; i < 5; i++) if(a[i] > big) big = a[i];",
-            "B) int big = a[0]; for(int i = 1; i <= 5; i++) if(a[i] > big) big = a[i];",
-            "C) int big = a[0]; for(int i = 1; i < 5; i++) if(a[i] < big) big = a[i];",
-            "D) int big = 0; for(int i = 1; i < 5; i++) if(a[i] > big) big = a[i];"
-        ],
-        answer: "A) int big = a[0]; for(int i = 1; i < 5; i++) if(a[i] > big) big = a[i];"
-    },
-
-    // Q9
-    {
-        question: "عند تشغيل البرنامج كما هو، ماذا سيحدث؟",
-        code: `
-#include <iostream>
-using namespace std;
-
-int main()
-{
-    int x = 1;
-
-    while(x <= 5)
-    {
-        cout << x << " ";
-    }
+    s.display();
 
     return 0;
 }
-        `,
+`,
+
         options: [
-            "سيطبع 1 2 3 4 5 ثم يتوقف",
-            "سيطبع 1 مرة واحدة ثم يتوقف",
-            "سيستمر في التكرار لأن x لا تتغير",
-            "لن يتم تنفيذ الحلقة"
-        ],
-        answer: "سيستمر في التكرار لأن x لا تتغير"
-    },
-
-    // Q10
-    {
-        question: "ما القيمة النهائية للمتغير sum؟",
-        code: `
-#include <iostream>
-using namespace std;
-
-int main()
-{
-    int sum = 1;
-
-    for(int i = 1; i <= 5; i++)
-    {
-        if(i % 2 != 0)
-            sum += i;
-    }
-
-    cout << sum;
-
-    return 0;
-}
-        `,
-        options: [
-            "9",
-            "10",
-            "12",
-            "16"
-        ],
-        answer: "10"
-    },
-
-    // Q11
-    {
-        question: "ما القيمة النهائية للمتغير sum بعد انتهاء الحلقة؟",
-        code: `
-#include <iostream>
-using namespace std;
-
-int main()
-{
-    int sum = 0;
-
-    for(int i = 1; i <= 6; i++)
-    {
-        if(i % 2 == 0)
-            sum += i;
-    }
-
-    cout << sum;
-
-    return 0;
-}
-        `,
-        options: [
-            "6",
-            "9",
-            "12",
-            "21"
-        ],
-        answer: "12"
-    },
-
-    // Q12
-    {
-        question: "عندما تصل قيمة i إلى 5، ما آخر قيمة سيتم طباعتها؟",
-        code: `
-#include <iostream>
-using namespace std;
-
-int main()
-{
-    for(int i = 1; i <= 10; i++)
-    {
-        if(i == 5)
-            break;
-
-        cout << i << " ";
-    }
-
-    return 0;
-}
-        `,
-        options: [
-            "4",
+            "15",
             "5",
-            "6",
-            "10"
+            "20",
+            "Error"
         ],
-        answer: "4"
+
+        answer: "20"
     },
 
-    // Q13
     {
-        question: "كم مرة سيتم تنفيذ أمر  cout ؟",
-        code: `
+        question: "ما هو ناتج الكود التالي؟",
+
+        code: String.raw`
 #include <iostream>
 using namespace std;
 
+class Car {
+protected:
+    int speed = 150;
+
+public:
+    void show() {
+        cout << speed << endl;
+    }
+};
+
+class BMW : public Car {
+public:
+    void changeSpeed() {
+        speed = 200;
+    }
+};
+
 int main()
 {
-    for(int i = 1; i <= 3; i++)
-    {
-        for(int j = 1; j <= 3; j++)
-        {
-            if(j == 2)
-                break;
+    BMW b;
 
-            cout << j << " ";
-        }
-    }
+    b.changeSpeed();
+    b.show();
 
     return 0;
 }
-        `,
+`,
+
         options: [
-            "2 مرات",
-            "3 مرات",
-            "6 مرات",
-            "9 مرات"
+            "150",
+            "200",
+            "Error",
+            "0"
         ],
-        answer: "3 مرات"
+
+        answer: "200"
     },
 
-    // Q14
     {
-        question: "ما الناتج بعد تنفيذ lOOP ؟",
-        code: `
+        question: "ما هو ناتج الكود التالي؟",
+
+        code: String.raw`
 #include <iostream>
 using namespace std;
 
+class Number {
+private:
+    int x;
+
+public:
+    void setX(int value) {
+        x = value;
+    }
+
+    int getX() {
+        return x;
+    }
+};
+
 int main()
 {
-    for(int i = 1; i <= 5; i++)
-    {
-        if(i == 3)
-            continue;
+    Number n;
 
-        cout << i << " ";
-    }
+    n.setX(25);
+
+    cout << n.getX() << endl;
 
     return 0;
 }
-        `,
+`,
+
         options: [
-            "1 2 3 4 5",
-            "1 2 4 5",
-            "1 2 3",
-            "3 4 5"
+            "0",
+            "25",
+            "5",
+            "Error"
         ],
-        answer: "1 2 4 5"
+
+        answer: "25"
     },
 
-    // Q15
     {
-        question: "أي اختيار يمثل الناتج الصحيح للبرنامج؟",
-        code: `
+        question: "ما هو ناتج الكود ؟",
+
+        code: String.raw`
 #include <iostream>
 using namespace std;
 
+class Student {
+private:
+    int grade = 80;
+
+public:
+    void setGrade(int g) {
+        if (g >= 0 && g <= 100)
+            grade = g;
+    }
+
+    int getGrade() {
+        return grade;
+    }
+};
+
 int main()
 {
-    for(int i = 1; i <= 2; i++)
-    {
-        for(int j = 1; j <= 3; j++)
-        {
-            cout << j << " ";
-        }
+    Student s;
 
-        cout << endl;
-    }
+    s.setGrade(120);
+
+    cout << s.getGrade() << endl;
 
     return 0;
 }
-        `,
+`,
+
         options: [
-            "1 2 3 / 1 2 3",
-            "1 2 / 1 2 / 1 2",
-            "1 2 3 1 2 3",
-            "1 1 / 2 2 / 3 3"
+            "120",
+            "80",
+            "100",
+            "Error"
         ],
-        answer: "1 2 3 / 1 2 3"
+
+        answer: "80"
     },
 
-    // Q16
     {
-        question: "ما القيمة النهائية للمتغير count؟",
-        code: `
+        question: "ما هو ناتج الكود التالي؟",
+
+        code: String.raw`
 #include <iostream>
 using namespace std;
 
+class Student {
+public:
+    int age;
+
+    Student(int a) {
+        age = a;
+    }
+};
+
 int main()
 {
-    int a[6] = {3, 8, 5, 10, 7, 4};
-    int count = 0;
+    Student s(20);
 
-    for(int i = 0; i < 6; i++)
-    {
-        if(a[i] % 2 == 0)
-            count++;
-    }
-
-    cout << count;
+    cout << s.age << endl;
 
     return 0;
 }
-        `,
+`,
+
         options: [
-            "2",
+            "10",
+            "20",
+            "0",
+            "Error"
+        ],
+
+        answer: "20"
+    },
+
+    {
+        question: "ما هو ناتج الكود التالي؟",
+
+        code: String.raw`
+#include <iostream>
+using namespace std;
+
+class Number {
+public:
+    Number(int x) {
+        cout << x << endl;
+    }
+
+    Number(int x, int y) {
+        cout << x + y << endl;
+    }
+};
+
+int main()
+{
+    Number n(3, 4);
+
+    return 0;
+}
+`,
+
+        options: [
             "3",
             "4",
-            "6"
+            "7",
+            "Error"
         ],
-        answer: "3"
+
+        answer: "7"
     },
 
-    // Q17
     {
-        question: "كم مرة ستظهر القيمة 2 داخل المصفوفة؟",
-        code: `
+        question: "ما هو ناتج الكود التالي؟",
+
+        code: String.raw`
 #include <iostream>
 using namespace std;
 
+class A {
+public:
+    void show() {
+        cout << "Parent" << endl;
+    }
+};
+
+class B : public A {
+public:
+    void display() {
+        cout << "Child" << endl;
+    }
+};
+
 int main()
 {
-    int a[5] = {4, 2, 7, 2, 9};
-    int count = 0;
+    B obj;
 
-    for(int i = 0; i < 5; i++)
-    {
-        if(a[i] == 2)
-            count++;
-    }
-
-    cout << count;
+    obj.show();
+    obj.display();
 
     return 0;
 }
-        `,
+`,
+
+        options: [
+            "ChildParent",
+            "Parent",
+            "ParentChild",
+            "Error"
+        ],
+
+        answer: "ParentChild"
+    },
+
+    {
+        question: "أي مجموعة من الدوال التالية يمكن عمل Method Overloading لها؟",
+
+        code: String.raw`
+#include <iostream>
+using namespace std;
+
+int add(int x);
+int add(double x);
+
+int main()
+{
+    return 0;
+}
+`,
+
+        options: [
+            "int add(int x); int add(int y);",
+            "int add(int x); int add(double x);",
+            "int add(int x); double add(int x);",
+            "int add(int x); int add(int x);"
+        ],
+
+        answer: "int add(int x); int add(double x);"
+    },
+
+    {
+        question: "ما هو ناتج الكود التالي؟",
+
+        code: String.raw`
+#include <iostream>
+using namespace std;
+
+class A {
+public:
+    void show() {
+        cout << "A" << endl;
+    }
+};
+
+class B : public A {
+public:
+    void show() {
+        cout << "B" << endl;
+    }
+};
+
+int main()
+{
+    B obj;
+
+    obj.show();
+
+    return 0;
+}
+`,
+
+        options: [
+            "A",
+            "B",
+            "AB",
+            "Error"
+        ],
+
+        answer: "B"
+    },
+
+    {
+        question: "ما هو ناتج الكود التالي؟",
+
+        code: String.raw`
+#include <iostream>
+using namespace std;
+
+class Animal {
+public:
+    void sound() {
+        cout << "Animal" << endl;
+    }
+};
+
+class Dog : public Animal {
+public:
+    void sound() {
+        cout << "Dog" << endl;
+    }
+};
+
+int main()
+{
+    Dog d;
+
+    d.sound();
+
+    return 0;
+}
+`,
+
+        options: [
+            "Animal",
+            "Dog",
+            "AnimalDog",
+            "Error"
+        ],
+
+        answer: "Dog"
+    },
+
+    {
+        question: "ما هو ناتج الكود التالي؟",
+
+        code: String.raw`
+#include <iostream>
+using namespace std;
+
+class A {
+public:
+    virtual void show() {
+        cout << "A" << endl;
+    }
+};
+
+class B : public A {
+public:
+    void show() override {
+        cout << "B" << endl;
+    }
+};
+
+int main()
+{
+    B obj;
+
+    A* ptr = &obj;
+
+    ptr->show();
+
+    return 0;
+}
+`,
+
+        options: [
+            "A",
+            "B",
+            "AB",
+            "Error"
+        ],
+
+        answer: "B"
+    },
+
+    {
+        question: "ما هو ناتج الكود التالي؟",
+
+        code: String.raw`
+#include <iostream>
+using namespace std;
+
+class A {
+public:
+    virtual void print() {
+        cout << 1 << endl;
+    }
+};
+
+class B : public A {
+public:
+    void print() override {
+        cout << 2 << endl;
+    }
+};
+
+int main()
+{
+    B b;
+
+    A* p = &b;
+
+    p->print();
+
+    return 0;
+}
+`,
+
         options: [
             "1",
             "2",
-            "3",
-            "4"
+            "12",
+            "Error"
         ],
+
         answer: "2"
     },
 
-    // Q18
     {
-        question: "ما القيمة الموجودة في a[1][2]؟",
-        code: `
+        question: "ما هو ناتج الكود التالي؟",
+
+        code: String.raw`
 #include <iostream>
 using namespace std;
 
+class Animal {
+public:
+    virtual void sound() = 0;
+};
+
+class Dog : public Animal {
+public:
+    void sound() override {
+        cout << "Bark" << endl;
+    }
+};
+
 int main()
 {
-    int a[2][3] = {
-        {1, 2, 3},
-        {4, 5, 6}
-    };
+    Dog d;
 
-    cout << a[1][2];
+    d.sound();
 
     return 0;
 }
-        `,
+`,
+
         options: [
-            "3",
-            "4",
-            "5",
-            "6"
+            "Animal",
+            "Bark",
+            "Error",
+            "0"
         ],
-        answer: "6"
+
+        answer: "Bark"
     },
 
-    // Q19
     {
-        question: "ما القيمة النهائية للمتغير sum؟",
-        code: `
+        question: "ما هو ناتج الكود التالي؟",
+
+        code: String.raw`
 #include <iostream>
 using namespace std;
 
+class Shape {
+public:
+    virtual void draw() = 0;
+
+    void info() {
+        cout << "Shape" << endl;
+    }
+};
+
+class Circle : public Shape {
+public:
+    void draw() override {
+        cout << "Circle" << endl;
+    }
+};
+
 int main()
 {
-    int a[2][2] = {
-        {1, 2},
-        {3, 4}
-    };
+    Circle c;
 
-    int sum = 0;
+    c.info();
+    c.draw();
 
-    for(int i = 0; i < 2; i++)
+    return 0;
+}
+`,
+
+        options: [
+            "CircleShape",
+            "Circle",
+            "ShapeCircle",
+            "Error"
+        ],
+
+        answer: "ShapeCircle"
+    },
+
     {
-        for(int j = 0; j < 2; j++)
-        {
-            sum += a[i][j];
-        }
+        question: "ما هو ناتج الكود التالي؟",
+
+        code: String.raw`
+#include <iostream>
+using namespace std;
+
+class Payment {
+public:
+    virtual void pay() = 0;
+};
+
+class Cash : public Payment {
+public:
+    void pay() override {
+        cout << "Cash" << endl;
+    }
+};
+
+int main()
+{
+    Cash c;
+
+    Payment* p = &c;
+
+    p->pay();
+
+    return 0;
+}
+`,
+
+        options: [
+            "Payment",
+            "Cash",
+            "Error",
+            "0"
+        ],
+
+        answer: "Cash"
+    },
+
+    {
+        question: "ما ناتج الكود؟",
+
+        code: String.raw`
+#include <iostream>
+using namespace std;
+
+class Car {
+public:
+    virtual void start() final {
+        cout << "Car" << endl;
+    }
+};
+
+class BMW : public Car {
+public:
+    void start() override {
+        cout << "BMW" << endl;
+    }
+};
+
+int main()
+{
+    BMW b;
+
+    b.start();
+
+    return 0;
+}
+`,
+
+        options: [
+            "Car",
+            "BMW",
+            "CarBMW",
+            "Error"
+        ],
+
+        answer: "Error"
+    },
+
+    {
+        question: "ما هو ناتج الكود التالي؟",
+
+        code: String.raw`
+#include <iostream>
+using namespace std;
+
+class Car {
+protected:
+    int speed = 100;
+
+public:
+    virtual void start() {
+        cout << "Car" << endl;
+    }
+};
+
+class BMW : public Car {
+public:
+    void changeSpeed() {
+        speed = 200;
     }
 
-    cout << sum;
-
-    return 0;
-}
-        `,
-        options: [
-            "4",
-            "6",
-            "10",
-            "12"
-        ],
-        answer: "10"
-    },
-
-    // Q20
-    {
-        question: "ما الحرف الذي سيتم الوصول إليه باستخدام name[3]؟",
-        code: `
-#include <iostream>
-#include <string>
-using namespace std;
-
-int main()
-{
-    string name = "Ahmed";
-
-    cout << name[3];
-
-    return 0;
-}
-        `,
-        options: [
-            "A",
-            "h",
-            "m",
-            "e"
-        ],
-        answer: "e"
-    },
-
-    // Q21
-{
-    question: "ما الناتج المتوقع من البرنامج التالي؟",
-    code: `
-#include <iostream>
-#include <string>
-using namespace std;
-
-int main()
-{
-    int x = 10;
-    float *p = &x;
-
-    cout << p;
-
-    return 0;
-}
-    `,
-    options: [
-       "10",
-"Address of x",
-"Address of p",
-"Error"
-    ],
-    answer: "Error"
-},
-
-    // Q22
-    {
-        question: "ما الناتج الكامل؟",
-        code: `
-#include <iostream>
-using namespace std;
-
-void cal(int x)
-{
-    x = x + 3;
-
-    if(x % 2 == 0)
-        cout << "Even";
-    else
-        cout << "Odd";
-}
-
-int main()
-{
-    int x = 4;
-
-    cal(x);
-
-    cout << " " << x;
-
-    return 0;
-}
-        `,
-        options: [
-            "Even 7",
-            "Odd 4",
-            "Odd 7",
-            "Even 4"
-        ],
-        answer: "Odd 4"
-    },
-
-    // Q23
-    {
-        question: "ما الناتج؟",
-        code: `
-#include <iostream>
-using namespace std;
-
-int x = 10;
-
-void test()
-{
-    int x = 20;
-
-    cout << x << " ";
-}
-
-int main()
-{
-    test();
-
-    cout << x;
-
-    return 0;
-}
-        `,
-        options: [
-            "10 10",
-            "20 20",
-            "20 10",
-            "10 20"
-        ],
-        answer: "20 10"
-    },
-
-    // Q24
-    {
-        question: "ما القيمة النهائية للمتغير sum؟",
-        code: `
-#include <iostream>
-using namespace std;
-
-int main()
-{
-    int sum = 0;
-
-    for(int i = 1; i <= 5; i++)
-    {
-        if(i == 3)
-            continue;
-
-        sum += i;
+    void start() override {
+        cout << speed << endl;
     }
-
-    cout << sum;
-
-    return 0;
-}
-        `,
-        options: [
-            "9",
-            "10",
-            "12",
-            "15"
-        ],
-        answer: "12"
-    },
-
-    // Q25
-    {
-    question: "ما الناتج المتوقع من البرنامج التالي؟",
-    code: `
-#include <iostream>
-using namespace std;
+};
 
 int main()
 {
-    int x = 1;
+    BMW b;
 
-    do
-    {
-        cout << x << " ";
-        x++;
+    b.changeSpeed();
 
-    } while(x <= 3)
+    Car* p = &b;
+
+    p->start();
 
     return 0;
 }
-    `,
-    options: [
-        "1 2 3",
-        "1 2 3 4",
-        "1 2",
-        "Error"
-    ],
-    answer: "Error"
-},
+`,
+
+        options: [
+            "100",
+            "200",
+            "Car",
+            "Error"
+        ],
+
+        answer: "200"
+    }
 
 ];

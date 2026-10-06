@@ -1,5 +1,5 @@
 const GOOGLE_SCRIPT_URL =
-    "https://script.google.com/macros/s/AKfycbwEK4P8IpwsriJPZIBc6blM12FBm4bERXV1sK3Lp4hA8bAZv3Ac2u_SZHpQovwG_tprCw/exec";
+    "https://script.google.com/macros/s/AKfycbwD1D7gGUyu30bXbXg21EzOh1vMaqLvt5JyFloOeJjqpzj1ADm33OEPr4zQ3NNaTaJt7Q/exec"
 
 
 /* =========================================
@@ -11,7 +11,6 @@ async function loadResults() {
     const loading =
         document.getElementById("loading");
 
-
     const ranking =
         document.getElementById("ranking");
 
@@ -19,32 +18,30 @@ async function loadResults() {
     try {
 
         const response =
-            await fetch(
-                GOOGLE_SCRIPT_URL
-            );
+            await fetch(GOOGLE_SCRIPT_URL);
 
 
         const results =
             await response.json();
 
 
-        /*
-           Sort by score
-           If same score → faster time first
-        */
+        /* =========================================
+           SORT RESULTS
+
+           Higher score first.
+           If same score → faster exam time first.
+        ========================================= */
 
         results.sort(
-            function(a, b) {
+            function (a, b) {
 
                 if (
-                    Number(a.score)
-                    !==
+                    Number(a.score) !==
                     Number(b.score)
                 ) {
 
                     return (
-                        Number(b.score)
-                        -
+                        Number(b.score) -
                         Number(a.score)
                     );
 
@@ -52,18 +49,17 @@ async function loadResults() {
 
 
                 return (
-                    convertTime(
-                        a.timeUsed
-                    )
-                    -
-                    convertTime(
-                        b.timeUsed
-                    )
+                    convertTime(a.timeUsed) -
+                    convertTime(b.timeUsed)
                 );
 
             }
         );
 
+
+        /* =========================================
+           HIDE LOADING
+        ========================================= */
 
         loading.style.display =
             "none";
@@ -73,26 +69,24 @@ async function loadResults() {
             "";
 
 
-        /*
+        /* =========================================
            DISPLAY RESULTS
-        */
+        ========================================= */
 
         results.forEach(
-            function(student, index) {
+            function (student, index) {
 
                 const row =
-                    document.createElement(
-                        "div"
-                    );
+                    document.createElement("div");
 
 
                 row.className =
                     "ranking-row";
 
 
-                /*
+                /* =========================================
                    MEDALS
-                */
+                ========================================= */
 
                 let medal = "";
 
@@ -102,19 +96,16 @@ async function loadResults() {
                     medal = "🥇";
 
                 }
-
                 else if (index === 1) {
 
                     medal = "🥈";
 
                 }
-
                 else if (index === 2) {
 
                     medal = "🥉";
 
                 }
-
                 else {
 
                     medal =
@@ -123,9 +114,9 @@ async function loadResults() {
                 }
 
 
-                /*
+                /* =========================================
                    CREATE ROW
-                */
+                ========================================= */
 
                 row.innerHTML = `
 
@@ -133,46 +124,35 @@ async function loadResults() {
                         ${medal}
                     </div>
 
-
                     <div class="student-name">
                         ${student.name}
                     </div>
-
 
                     <div class="score">
                         ${student.score}/${student.total}
                     </div>
 
-
                     <div class="percentage">
                         ${student.percentage}%
                     </div>
 
-
                     <div class="time">
-                        ${formatDisplayTime(
-                            student.timeUsed
-                        )}
+                        ${student.submittedAt || "--"}
                     </div>
 
                 `;
 
 
-                ranking.appendChild(
-                    row
-                );
+                ranking.appendChild(row);
 
             }
         );
 
 
     }
-
     catch (error) {
 
-        console.error(
-            error
-        );
+        console.error(error);
 
 
         loading.textContent =
@@ -185,7 +165,7 @@ async function loadResults() {
 
 /* =========================================
    CONVERT TIME
-   Used for sorting
+   Used ONLY for sorting
 ========================================= */
 
 function convertTime(time) {
@@ -198,15 +178,75 @@ function convertTime(time) {
 
 
     time =
-        time.toString();
+        time.toString().trim();
 
 
-    /*
-       Google Sheets ISO Date
+    /* =========================================
+       Arabic Google Sheets Time
+
+       Example:
+       1:36:49 ص 2026/10/07
+    ========================================= */
+
+    const arabicTime =
+        time.match(
+            /^(\d{1,2}):(\d{2}):(\d{2})\s*(ص|م)/
+        );
+
+
+    if (arabicTime) {
+
+        let hours =
+            Number(arabicTime[1]);
+
+
+        const minutes =
+            Number(arabicTime[2]);
+
+
+        const seconds =
+            Number(arabicTime[3]);
+
+
+        const period =
+            arabicTime[4];
+
+
+        if (period === "ص") {
+
+            if (hours === 12) {
+
+                hours = 0;
+
+            }
+
+        }
+        else {
+
+            if (hours !== 12) {
+
+                hours += 12;
+
+            }
+
+        }
+
+
+        return (
+            hours * 3600 +
+            minutes * 60 +
+            seconds
+        );
+
+    }
+
+
+    /* =========================================
+       ISO Date
 
        Example:
        1899-12-29T22:16:51.000Z
-    */
+    ========================================= */
 
     if (
         time.includes("T")
@@ -216,28 +256,27 @@ function convertTime(time) {
             new Date(time);
 
 
+        if (
+            isNaN(date.getTime())
+        ) {
+
+            return 0;
+
+        }
+
+
         return (
-            date.getUTCHours()
-            *
-            3600
-            +
-            date.getUTCMinutes()
-            *
-            60
-            +
+            date.getUTCHours() * 3600 +
+            date.getUTCMinutes() * 60 +
             date.getUTCSeconds()
         );
 
     }
 
 
-    /*
-       Normal Time
-
+    /* =========================================
        HH:MM:SS
-       or
-       MM:SS
-    */
+    ========================================= */
 
     const parts =
         time.split(":");
@@ -258,15 +297,17 @@ function convertTime(time) {
 
 
         return (
-            hours * 3600
-            +
-            minutes * 60
-            +
+            hours * 3600 +
+            minutes * 60 +
             seconds
         );
 
     }
 
+
+    /* =========================================
+       MM:SS
+    ========================================= */
 
     if (parts.length === 2) {
 
@@ -279,8 +320,7 @@ function convertTime(time) {
 
 
         return (
-            minutes * 60
-            +
+            minutes * 60 +
             seconds
         );
 
@@ -288,89 +328,6 @@ function convertTime(time) {
 
 
     return 0;
-
-}
-
-
-/* =========================================
-   FORMAT DISPLAY TIME
-========================================= */
-
-function formatDisplayTime(time) {
-
-    if (!time) {
-
-        return "00:00:00";
-
-    }
-
-
-    time =
-        time.toString();
-
-
-    /*
-       Google Sheets ISO Date
-
-       Example:
-       1899-12-29T22:16:51.000Z
-    */
-
-    if (
-        time.includes("T")
-    ) {
-
-        const date =
-            new Date(time);
-
-
-        const hours =
-            String(
-                date.getUTCHours()
-            ).padStart(
-                2,
-                "0"
-            );
-
-
-        const minutes =
-            String(
-                date.getUTCMinutes()
-            ).padStart(
-                2,
-                "0"
-            );
-
-
-        const seconds =
-            String(
-                date.getUTCSeconds()
-            ).padStart(
-                2,
-                "0"
-            );
-
-
-        return (
-            hours
-            +
-            ":"
-            +
-            minutes
-            +
-            ":"
-            +
-            seconds
-        );
-
-    }
-
-
-    /*
-       Already normal time
-    */
-
-    return time;
 
 }
 

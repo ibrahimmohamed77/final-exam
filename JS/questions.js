@@ -324,8 +324,6 @@ int main()
 #include <iostream>
 using namespace std;
 
-int add(int x);
-int add(double x);
 
 int main()
 {

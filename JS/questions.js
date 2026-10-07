@@ -285,14 +285,14 @@ using namespace std;
 class A {
 public:
     void show() {
-        cout << "Parent" << endl;
+        cout << "Parent" ;
     }
 };
 
 class B : public A {
 public:
     void display() {
-        cout << "Child" << endl;
+        cout << "Child" ;
     }
 };
 
@@ -350,40 +350,77 @@ int main()
 #include <iostream>
 using namespace std;
 
-class A {
-public:
-    void show() {
-        cout << "A" << endl;
-    }
+class Car {
+private:
+    int speed = 100;
+
+protected:
+    int price = 500000;
 };
 
-class B : public A {
+class BMW : public Car {
 public:
     void show() {
-        cout << "B" << endl;
+        cout << price << endl;
     }
 };
 
 int main()
 {
-    B obj;
+    BMW b;
 
-    obj.show();
+    b.show();
+
+    return 0;
+}
+`,
+    options: [
+        "100",
+        "500000",
+        "Error",
+        "0"
+    ],
+
+    answer: "500000"
+},
+
+    {
+        question: "ما هو ناتج الكود التالي؟",
+
+        code: String.raw`
+class Car {
+public:
+    void start() {
+        cout << "Car Started" << endl;
+    }
+};
+
+class BMW : public Car {
+public:
+    void drive() {
+        cout << "BMW is Driving" << endl;
+    }
+};
+
+int main()
+{
+    BMW car;
+
+    car.start();
 
     return 0;
 }
 `,
 
-        options: [
-            "A",
-            "B",
-            "AB",
-            "Error"
-        ],
+          options: [
+        "Car Started",
+        "BMW is Driving",
+        "Car Started BMW is Driving",
+        "Error"
+    ],
 
-        answer: "B"
-    },
-
+    answer: "Car Started"
+},
     {
         question: "ما هو ناتج الكود التالي؟",
 
@@ -391,82 +428,41 @@ int main()
 #include <iostream>
 using namespace std;
 
-class Animal {
+class Student {
+private:
+    int age;
+
 public:
-    void sound() {
-        cout << "Animal" << endl;
+    void setAge(int a) {
+        if (a > 0)
+            age = a;
     }
-};
 
-class Dog : public Animal {
-public:
-    void sound() {
-        cout << "Dog" << endl;
-    }
-};
-
-int main()
-{
-    Dog d;
-
-    d.sound();
-
-    return 0;
-}
-`,
-
-        options: [
-            "Animal",
-            "Dog",
-            "AnimalDog",
-            "Error"
-        ],
-
-        answer: "Dog"
-    },
-
-    {
-        question: "ما هو ناتج الكود التالي؟",
-
-        code: String.raw`
-#include <iostream>
-using namespace std;
-
-class A {
-public:
-    virtual void show() {
-        cout << "A" << endl;
-    }
-};
-
-class B : public A {
-public:
-    void show() override {
-        cout << "B" << endl;
+    int getAge() {
+        return age;
     }
 };
 
 int main()
 {
-    B obj;
+    Student s;
 
-    A* ptr = &obj;
+    s.setAge = 20;
 
-    ptr->show();
+    cout << s.getAge() << endl;
 
     return 0;
 }
 `,
+  options: [
+        "0",
+        "20",
+        "Error",
+        "age"
+    ],
 
-        options: [
-            "A",
-            "B",
-            "AB",
-            "Error"
-        ],
-
-        answer: "B"
-    },
+    answer: "Error"
+},
 
     {
         question: "ما هو ناتج الكود التالي؟",
@@ -532,23 +528,66 @@ public:
 
 int main()
 {
-    Dog d;
+    Animal a;
 
-    d.sound();
+    a.sound();
 
     return 0;
 }
 `,
 
-        options: [
-            "Animal",
-            "Bark",
-            "Error",
-            "0"
-        ],
+         options: [
+        "Bark",
+        "Animal",
+        "Error",
+        "0"
+    ],
 
-        answer: "Bark"
-    },
+    answer: "Error"
+},
+    {
+        question: "ما هو ناتج الكود التالي؟",
+
+        code: String.raw`
+#include <iostream>
+using namespace std;
+
+class Employee {
+public:
+    virtual void work() = 0;
+
+    void show() {
+        cout << "Employee" << endl;
+    }
+};
+
+class Developer : public Employee {
+public:
+    void work() override {
+        cout << "Coding" << endl;
+    }
+};
+
+int main()
+{
+    Developer d;
+
+    d.show();
+    d.work();
+
+    return 0;
+}
+`,
+
+    options: [
+        "Employee Coding",
+        "Coding Employee",
+        "Employee",
+        "Error"
+    ],
+
+    answer: "Employee Coding"
+},
 
     {
         question: "ما هو ناتج الكود التالي؟",
@@ -557,84 +596,41 @@ int main()
 #include <iostream>
 using namespace std;
 
-class Shape {
-public:
-    virtual void draw() = 0;
+class Employee {
+private:
+    double salary;
 
-    void info() {
-        cout << "Shape" << endl;
+public:
+    void setSalary(double s) {
+        salary = s;
     }
-};
 
-class Circle : public Shape {
-public:
-    void draw() override {
-        cout << "Circle" << endl;
-    }
-};
-
-int main()
-{
-    Circle c;
-
-    c.info();
-    c.draw();
-
-    return 0;
-}
-`,
-
-        options: [
-            "CircleShape",
-            "Circle",
-            "ShapeCircle",
-            "Error"
-        ],
-
-        answer: "ShapeCircle"
-    },
-
-    {
-        question: "ما هو ناتج الكود التالي؟",
-
-        code: String.raw`
-#include <iostream>
-using namespace std;
-
-class Payment {
-public:
-    virtual void pay() = 0;
-};
-
-class Cash : public Payment {
-public:
-    void pay() override {
-        cout << "Cash" << endl;
+    double getSalary() {
+        return salary;
     }
 };
 
 int main()
 {
-    Cash c;
+    Employee emp;
 
-    Payment* p = &c;
+    emp.salary = 5000;
 
-    p->pay();
+    cout << emp.getSalary() << endl;
 
     return 0;
 }
 `,
 
-        options: [
-            "Payment",
-            "Cash",
-            "Error",
-            "0"
-        ],
+    options: [
+        "5000",
+        "0",
+        "Error",
+        "salary"
+    ],
 
-        answer: "Cash"
-    },
-
+    answer: "Error"
+},
     {
         question: "ما ناتج الكود؟",
 
@@ -683,49 +679,41 @@ int main()
 #include <iostream>
 using namespace std;
 
-class Car {
-protected:
-    int speed = 100;
-
+class Calculator {
 public:
-    virtual void start() {
-        cout << "Car" << endl;
-    }
-};
-
-class BMW : public Car {
-public:
-    void changeSpeed() {
-        speed = 200;
+    int add(int a, int b) {
+        return a + b;
     }
 
-    void start() override {
-        cout << speed << endl;
+    double add(double a, double b) {
+        return a + b;
+    }
+
+    int add(int a, int b, int c) {
+        return a + b + c;
     }
 };
 
 int main()
 {
-    BMW b;
+    Calculator c;
 
-    b.changeSpeed();
-
-    Car* p = &b;
-
-    p->start();
+    cout << c.add(5, 10) << endl;
+    cout << c.add(2.5, 3.5) << endl;
+    cout << c.add(1, 2, 3) << endl;
 
     return 0;
 }
 `,
 
-        options: [
-            "100",
-            "200",
-            "Car",
-            "Error"
-        ],
+      options: [
+        "15 6 6",
+        "15 5 6",
+        "Error",
+        "15 6.0 5"
+    ],
 
-        answer: "200"
-    }
+    answer: "15 6 6"
+},
 
 ];
